@@ -14,7 +14,7 @@
 		<form action = "calculator.php" method = "GET">
 			<fieldset>
 				<label for = "department">Department:</label>
-				<select name = "department">
+				<select name = "department" id = "department">
 					<option value="computer_science">Computer Science</option>
 					<option value="mathematics">Mathematics</option>
 					<option value="chemistry">Chemistry</option>
