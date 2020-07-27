@@ -26,10 +26,15 @@
 
     function compare_course_codes($first_course_detail, $second_course_detail) {
 
-        $splitted_course_code = explode(" ", $first_course_detail->course_code);
-        $first_course_level_and_semester = $splitted_course_code[1];
-        $splitted_course_code = explode(" ", $second_course_detail->course_code);
-        $second_course_level_and_semester = $splitted_course_code[1];
+        if (!empty($first_course_detail->course_code) && !empty($second_course_detail->course_code)) {
+            $splitted_course_code = explode(" ", $first_course_detail->course_code);
+            $first_course_level_and_semester = $splitted_course_code[1];
+            $splitted_course_code = explode(" ", $second_course_detail->course_code);
+            $second_course_level_and_semester = $splitted_course_code[1];
+        } else {
+            $first_course_level_and_semester = 0;
+            $second_course_level_and_semester = 0;
+        }
 
         return $first_course_level_and_semester - $second_course_level_and_semester;
     }

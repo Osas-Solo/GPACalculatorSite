@@ -49,7 +49,6 @@
                 $row = mysqli_fetch_row($data);
                 $number_of_courses = $row[0];
             }
-            
 
             //  select arrangement of fieldsets based on number of courses
             $class_name = "";
@@ -99,8 +98,6 @@
                 $_SESSION['valid_course'] = false;
                 echo "\t\t<p>You've entered an invalid course in the URL</p>\n";
             }
-
-            
 
         ?>
             
