@@ -52,7 +52,6 @@
 
             require_once("course_details.php");
             $is_course_valid = $_SESSION['valid_course'];
-            echo $is_course_valid;
 
             if ($is_course_valid) {
 

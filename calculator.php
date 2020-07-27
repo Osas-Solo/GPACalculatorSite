@@ -1,6 +1,6 @@
 <?php
 
-	
+    session_start();
 	$page_title = "Calculator";
 	require_once("header.php");
 	require_once("navigation.php");
@@ -75,7 +75,6 @@
             $data = mysqli_query($database_connector, $query);
 
             if (!empty($data)) {
-                session_start();
                 $_SESSION['valid_course'] = true;
 
                 while ($row = mysqli_fetch_array($data)) {
@@ -97,7 +96,6 @@
                     echo "\t\t</fieldset>\n\n";
                 }
             } else {
-                session_start();
                 $_SESSION['valid_course'] = false;
                 echo "\t\t<p>You've entered an invalid course in the URL</p>\n";
             }
