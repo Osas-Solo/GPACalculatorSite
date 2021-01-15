@@ -111,7 +111,7 @@
             echo "<span id = 'current-semester' style = 'display: none'>" . $first_semester . "</span>";
         ?>
 
-            <div class = "navigation buttons">
+            <div class = "navigation-buttons">
                 <button id = "previous-semester" type = "button" onclick = "showPreviousSemester()">
                     &larr; Previous Semester
                 </button>
