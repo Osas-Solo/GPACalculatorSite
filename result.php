@@ -64,28 +64,41 @@
                 $number_of_courses = count($_GET["course_codes"]);
                 $course_codes = [];
                 $credit_units = [];
+                $semesters = [];
                 $grades = [];
     
     
                 foreach($_GET["course_codes"] as $course_code) {
+                    if (!isset($course_code)) {
+                        $course_code = " ";
+                    }
                     array_push($course_codes, $course_code);
                 }
     
                 foreach($_GET["credit_units"] as $credit_unit) {
+                    if (!isset($credit_unit)) {
+                        $credit_unit = 0;
+                    }
                     array_push($credit_units, $credit_unit);
                 }
                 
                 foreach($_GET["grades"] as $grade) {
                     array_push($grades, $grade);
                 }
-    
+
+                for($i = 0; $i < count($_GET["levels"]); $i++) {
+                    $semester = $_GET["levels"][$i] . " Level " . $_GET["semesters"][$i] . " Semester";
+                    array_push($semesters, $semester);
+                }
+                
                 for ($i = 0; $i < $number_of_courses; $i++) {
                     array_push($course_details, new CourseDetail($course_codes[$i],
                                                                 $credit_units[$i],
-                                                                $grades[$i]));
+                                                                $grades[$i],
+                                                                $semesters[$i]));
                 }
     
-            }  //  end of if
+            }  //  end of if course is valid
 
         ?>
 
@@ -93,9 +106,10 @@
             <table>
 
                 <tr>
-                    <th>Course Code</th>
-                    <th>Credit Unit</th>
-                    <th>Grade</th>
+                    <th id = "course-code-header">Course Code</th>
+                    <th id = "credit-unit-header">Credit Unit</th>
+                    <th id = "grade-header">Grade</th>
+                    <th style = 'display: none'>Semester</th>
                 </tr>
 
                 <?php
@@ -124,9 +138,10 @@
                             }
     
                             echo "\t\t\t\t\t<tr class = '$row_class'>\n";
-                            echo "\t\t\t\t\t\t<td>" . $course_detail->course_code . "</td>\n";
-                            echo "\t\t\t\t\t\t<td>" . $course_detail->credit_unit . "</td>\n";
-                            echo "\t\t\t\t\t\t<td>" . $course_detail->grade . "</td>\n";
+                            echo "\t\t\t\t\t\t<td class = 'course-code'>" . $course_detail->course_code . "</td>\n";
+                            echo "\t\t\t\t\t\t<td class = 'credit-unit'>" . $course_detail->credit_unit . "</td>\n";
+                            echo "\t\t\t\t\t\t<td class = 'grade'>" . $course_detail->grade . "</td>\n";
+                            echo "\t\t\t\t\t\t<td class = 'semester' style = 'display: none'>" . $course_detail->semester . "</td>\n";
                             echo "\t\t\t\t\t</tr>\n";
     
                             $current_course_number++;
@@ -135,8 +150,7 @@
 
                 ?>
 
-            </table> 
-
+            </table>
 
         <?php
 

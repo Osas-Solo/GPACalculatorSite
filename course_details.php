@@ -5,12 +5,14 @@
         public $course_code;
         public $credit_unit;
         public $grade;
+        public $semester;
         public $point;
 
-        public function CourseDetail($course_code, $credit_unit, $grade) {
+        public function CourseDetail($course_code, $credit_unit, $grade, $semester) {
             $this->course_code = $course_code;
             $this->credit_unit = $credit_unit;
             $this->grade = $grade;
+            $this->semester = $semester;
 
             switch ($grade) {
                 case 'A':

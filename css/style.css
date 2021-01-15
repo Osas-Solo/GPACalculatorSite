@@ -276,7 +276,7 @@ label {
 
 .twos, .threes, .fours, .fives {
     display: inline-block;
-    width: 35%;
+    width: 50%;
     height:auto;
     margin: 20px auto 10px auto;
     padding: 10px;
