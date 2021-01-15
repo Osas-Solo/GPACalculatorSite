@@ -48,7 +48,7 @@ function changeCurrentSemester(semesterChangeIndex) {
 
     if (newCurrentSemesterIndex == 0) {
         hideNavigationButton(previousButton);
-    }   else if (newCurrentSemesterIndex > 0) {
+    }   else if (newCurrentSemesterIndex > 0 && newCurrentSemesterIndex < availableSemesters.length) {
         showNavigationButton(previousButton);
     }
     
