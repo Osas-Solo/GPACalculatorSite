@@ -49,9 +49,7 @@
 
 ?>
 
-    <div class = "container">
-
-        <img src = "images/fupre_logo.png" alt = "FUPRE Logo"/>
+    <article>
 
         <?php
 
@@ -105,7 +103,7 @@
 
             <table>
 
-                <tr>
+                <tr class = "table-header">
                     <th id = "course-code-header">Course Code</th>
                     <th id = "credit-unit-header">Credit Unit</th>
                     <th id = "grade-header">Grade</th>
@@ -152,19 +150,21 @@
 
             </table>
 
+            <div id = "gpa-report">
         <?php
 
             if ($is_course_valid) {
                 $grade_point_average = $total_credit_points / $total_number_of_units;
-                print("\t\t\t<p>Total Number of Units: $total_number_of_units</p>\n");
-                print("\t\t\t<p>Total Credit Points: $total_credit_points</p>\n");
-                printf("\t\t\t<p>GPA: %.2f</p>\n", $grade_point_average);
-                print("\t\t\t<p>Remark: " . getRemark($grade_point_average) . "</p>\n");
+                print("\t\t\t\t<p>Total Number of Units: $total_number_of_units</p>\n");
+                print("\t\t\t\t<p>Total Credit Points: $total_credit_points</p>\n");
+                printf("\t\t\t\t<p>GPA: %.2f</p>\n", $grade_point_average);
+                print("\t\t\t\t<p>Remark: " . getRemark($grade_point_average) . "</p>\n");
             }
 
         ?>
+            </div>
 
-    </div>  <!-- end of container -->
+    </article>
 
 <?php  
 	require_once("footer.php");

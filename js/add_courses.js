@@ -1,16 +1,19 @@
-function addCourses(className) {
-    let numberOfCourses = document.getElementById("number_of_new_courses").value;
+function addCourses() {
+    let coursesNumberField = document.getElementById("number_of_new_courses");
+    let numberOfCourses = coursesNumberField.value;
 
     for (let i = 1; i <= numberOfCourses; i++) {
-        addCourse(className);
+        addCourse();
     }
+
+    coursesNumberField.value = "";
 }  //  end of addCourses()
 
-function addCourse(className) {
+function addCourse() {
     //  create fieldset
     let fieldSet = document.createElement("fieldSet");
     let currentSemester = document.getElementById("current-semester").innerHTML;
-    fieldSet.setAttribute("class", "courses-input " + className + " " + currentSemester);
+    fieldSet.setAttribute("class", "courses-input " + currentSemester);
 
     //  create legend
     let legend = document.createElement("legend");
@@ -18,12 +21,22 @@ function addCourse(className) {
     let semester = currentSemester.substring(currentSemester.indexOf("-") + 1);
     legend.innerHTML = level + " Level: " + semester + " Semester";
 
+    //  create inputs container
+    let inputsContainers = [];
+    for (let i = 0; i < 3; i++) {
+        let inputsContainer = document.createElement("div");
+        inputsContainer.setAttribute("class", "inputs-container");
+        inputsContainers.push(inputsContainer);
+    }
+
     //  create course code input
     let courseCodeLabel = document.createElement("label");
     courseCodeLabel.innerHTML = "Course Code:";
     let courseCodeInput = document.createElement("input");
     courseCodeInput.setAttribute("type", "text");
     courseCodeInput.setAttribute("name", "course_codes[]");
+    inputsContainers[0].appendChild(courseCodeLabel);
+    inputsContainers[0].appendChild(courseCodeInput);
 
     //  create credit unit input
     let creditUnitLabel = document.createElement("label");
@@ -32,6 +45,8 @@ function addCourse(className) {
     creditUnitInput.setAttribute("type", "number");
     creditUnitInput.setAttribute("min", "0");
     creditUnitInput.setAttribute("name", "credit_units[]");
+    inputsContainers[1].appendChild(creditUnitLabel);
+    inputsContainers[1].appendChild(creditUnitInput);
 
     //  create grade selector
     let gradeLabel = document.createElement("label");
@@ -50,6 +65,9 @@ function addCourse(className) {
         gradeSelector.appendChild(options[i]);
     }
 
+    inputsContainers[2].appendChild(gradeLabel);
+    inputsContainers[2].appendChild(gradeSelector);
+
     //  create course level
     let levelInput = document.createElement("input");
     levelInput.setAttribute("type", "text");
@@ -66,26 +84,13 @@ function addCourse(className) {
 
     //  append children to fieldset
     fieldSet.appendChild(legend);
-    fieldSet.appendChild(courseCodeLabel);
-    fieldSet.appendChild(courseCodeInput);
-    fieldSet.appendChild(creditUnitLabel);
-    fieldSet.appendChild(creditUnitInput);
-    fieldSet.appendChild(gradeLabel);
-    fieldSet.appendChild(gradeSelector);
+    fieldSet.appendChild(inputsContainers[0]);
+    fieldSet.appendChild(inputsContainers[1]);
+    fieldSet.appendChild(inputsContainers[2]);
     fieldSet.appendChild(levelInput);
     fieldSet.appendChild(semesterInput);
-    fieldSet.style.margin = "20px auto 10px auto";
 
     //  append fieldset to body
-    let previousButton = document.getElementById("previous-semester");
-    let nextButton = document.getElementById("next-semester");
-    let submit = document.getElementById("submit");
-    let calculatorForm = document.getElementById("calculator_form");
-    calculatorForm.removeChild(previousButton);
-    calculatorForm.removeChild(nextButton);
-    calculatorForm.removeChild(submit);
-    calculatorForm.appendChild(fieldSet);
-    calculatorForm.appendChild(previousButton);
-    calculatorForm.appendChild(nextButton);
-    calculatorForm.appendChild(submit);
+    let coursesFieldsetContainer = document.getElementById("courses-fieldsets-container");
+    coursesFieldsetContainer.appendChild(fieldSet);
 }  //  end of addCourse()

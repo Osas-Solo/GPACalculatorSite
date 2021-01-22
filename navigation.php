@@ -1,9 +1,10 @@
-        <nav>
+        <nav id = "nav">
             <ul>
-                <li ><a href="index.php">Home</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="help.php">Help</a></li>
+                <a href="index.php"><li>Home</li></a>
+                <a href="about.php"><li>About</li></a>
+                <a href="help.php"><li>Help</li></a>
             </ul>
         </nav>
 
+        <script src = "js/toggle_nav.js"></script>
     </header>

@@ -3,6 +3,7 @@ setCurrentSemesterInSpan();
 
 let previousButton = document.getElementById("previous-semester");
 let nextButton = document.getElementById("next-semester");
+let calculateButton = document.getElementById("calculate");
 
 hideNavigationButton(previousButton);
 
@@ -20,6 +21,12 @@ for (let i = 0; i < coursesInputFieldsets.length; i++) {
         availableSemesters.push(semester);
     }   //  end of if availableSemesters includes semester
 }   //  end of for
+
+if (availableSemesters.length > 1) {
+    calculateButton.style.display = "none";
+}   else if (availableSemesters.length == 1) {
+    hideNavigationButton(nextButton);
+}
 
 //  hide other semesters
 let currentSemesterFieldsets = document.getElementsByClassName(currentSemester);
@@ -54,8 +61,10 @@ function changeCurrentSemester(semesterChangeIndex) {
     
     if (newCurrentSemesterIndex == availableSemesters.length - 1) {
         hideNavigationButton(nextButton);
+        calculateButton.style.display = "";
     }   else if (newCurrentSemesterIndex < availableSemesters.length - 1) {
         showNavigationButton(nextButton);
+        calculateButton.style.display = "none";
     }
 }
 
