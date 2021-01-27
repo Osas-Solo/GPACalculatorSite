@@ -233,6 +233,10 @@ th, td {
     padding: 5px;
 }
 
+#course-code-header, #credit-unit-header, #grade-header {
+    cursor: pointer;
+}
+
 p {
     color: var(--primary-color1);
     margin: 10px;

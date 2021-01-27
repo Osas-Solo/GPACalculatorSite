@@ -100,14 +100,13 @@
 
         ?>
 
-
-            <table>
+            <table id = "result-table">
 
                 <tr class = "table-header">
-                    <th id = "course-code-header">Course Code</th>
-                    <th id = "credit-unit-header">Credit Unit</th>
-                    <th id = "grade-header">Grade</th>
-                    <th style = 'display: none'>Semester</th>
+                    <th id = "course-code-header" title = "Sort table by course code" onclick = "sortResultByCourseCode()">Course Code</th>
+                    <th id = "credit-unit-header" title = "Sort table by credit unit" onclick = "sortResultByCreditUnit()">Credit Unit</th>
+                    <th id = "grade-header" title = "Sort table by grade" onclick = "sortResultByGrade()">Grade</th>
+                    <th style = "display: none">Semester</th>
                 </tr>
 
                 <?php
@@ -117,7 +116,7 @@
                         $total_credit_points = 0;
                         $current_course_number = 0;
                         $row_class = "";
-                        usort($course_details, "compare_course_codes");
+                        //      usort($course_details, "compare_course_codes");
     
                         foreach ($course_details as $course_detail) {
                             
@@ -129,13 +128,7 @@
                                 $total_credit_points += 0;
                             }
     
-                            if ($current_course_number % 2 == 0) {
-                                $row_class = "even_row";
-                            } else {
-                                $row_class = "odd_row";
-                            }
-    
-                            echo "\t\t\t\t\t<tr class = '$row_class'>\n";
+                            echo "\t\t\t\t\t<tr>\n";
                             echo "\t\t\t\t\t\t<td class = 'course-code'>" . $course_detail->course_code . "</td>\n";
                             echo "\t\t\t\t\t\t<td class = 'credit-unit'>" . $course_detail->credit_unit . "</td>\n";
                             echo "\t\t\t\t\t\t<td class = 'grade'>" . $course_detail->grade . "</td>\n";
@@ -149,6 +142,8 @@
                 ?>
 
             </table>
+
+            <script src = "js/sort_result_table.js"></script>
 
             <div id = "gpa-report">
         <?php

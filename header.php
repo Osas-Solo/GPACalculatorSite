@@ -25,5 +25,5 @@
         </div>
 
         <figure id = "logo">
-            <a href = "https://GitHub.com/Osas-Solo" target = "_blank"><img src = "images/OS_Tech_Logo.png" alt = "OS Tech Logo"></a>
+            <a href = "index.php"><img src = "images/OS_Tech_Logo.png" alt = "OS Tech Logo"></a>
         </figure>
