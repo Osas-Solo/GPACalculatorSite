@@ -100,6 +100,11 @@ legend {
     text-align: center;
 }
 
+
+#college-of-science-container, #college-of-technology-container {
+    margin-top: 20px;
+}
+
 #semesters-fieldsets-container, #courses-fieldsets-container {
     margin: 100px auto 0 auto;
     padding: 30px;
@@ -136,6 +141,10 @@ input[type = "checkbox"] {
 
 #department-fieldset select {
     width: 90%;
+}
+
+#college-container select {
+    width: 95%;
 }
 
 button {

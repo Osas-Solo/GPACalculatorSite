@@ -10,22 +10,45 @@
 	<article>
 		<form action = "calculator.php" method = "GET">
 			<fieldset id = "department-fieldset">
-				<label for = "department">Department:</label>
-				<select name = "department" id = "department">
-					<option value="computer_science">Computer Science</option>
-					<option value="mathematics">Mathematics</option>
-					<option value="chemistry">Chemistry</option>
-					<option value="industrial_chemistry">Industrial Chemistry</option>
-					<option value="environmental_management_and_toxicology">Environmental Management and Toxicology</option>
-					<option value="geology">Geology</option>
-					<option value="geophysics">Geophysics</option>
-					<option value="electrical_and_electronics_engineering">Electrical and Electronics Engineering</option>
-					<option value="chemical_engineering">Chemical Engineering</option>
-					<option value="marine_engineering">Marine Engineering</option>
-					<option value="mechanical_engineering">Mechanical Engineering</option>
-					<option value="petroleum_engineering">Petroleum Engineering</option>
-				</select>
+
+				<div id = "college-container">
+					<label for = "college">College:</label>
+
+					<select name = "college" id = "college" onchange = "showDepartments()">
+						<option value = ""></option>
+						<option value = "College of Science">College of Science</option>
+						<option value = "College of Technology">College of Technology</option>
+					</select>
+				</div>
+
+				<div id = "college-of-science-container" style = "display: none">
+					<label for = "department">Department:</label>
+
+					<select id = "college-of-science">
+						<option value="computer_science">Computer Science</option>
+						<option value="mathematics">Mathematics</option>
+						<option value="chemistry">Chemistry</option>
+						<option value="industrial_chemistry">Industrial Chemistry</option>
+						<option value="environmental_management_and_toxicology">Environmental Management and Toxicology</option>
+						<option value="geology">Geology</option>
+						<option value="geophysics">Geophysics</option>
+					</select>
+				</div>
+
+				<div id = "college-of-technology-container" style = "display: none">
+					<label for = "department">Department:</label>
+
+					<select id = "college-of-technology">
+						<option value="electrical_and_electronics_engineering">Electrical and Electronics Engineering</option>
+						<option value="chemical_engineering">Chemical Engineering</option>
+						<option value="marine_engineering">Marine Engineering</option>
+						<option value="mechanical_engineering">Mechanical Engineering</option>
+						<option value="petroleum_engineering">Petroleum Engineering</option>
+					</select>
+				</div>
 			</fieldset>
+
+			<script src = "js/select_department.js"></script>
 
 			<div id = "semesters-fieldsets-container">
 				<fieldset class = "threes">

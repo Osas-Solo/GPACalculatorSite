@@ -7,7 +7,6 @@
 	require_once("navigation.php");
 
     function getRemark($gpa) {
-
         $remark = "";
 
         if ($gpa >= 4.50) {
@@ -21,31 +20,7 @@
         }
 
         return $remark;
-
     }  //  end of getRemark()
-
-    function compare_course_codes($first_course_detail, $second_course_detail) {
-
-        if (!empty($first_course_detail->course_code) && !empty($second_course_detail->course_code)) {
-            $splitted_course_code = explode(" ", $first_course_detail->course_code);
-            $first_course_level_and_semester = $splitted_course_code[1];
-            $splitted_course_code = explode(" ", $second_course_detail->course_code);
-            $second_course_level_and_semester = $splitted_course_code[1];
-        } else {
-            $first_course_level_and_semester = 0;
-            $second_course_level_and_semester = 0;
-        }
-
-        return $first_course_level_and_semester - $second_course_level_and_semester;
-    }
-
-    function compare_credit_units($first_course_detail, $second_course_detail) {
-        return $first_course_detail->credit_unit - $second_course_detail->credit_unit;
-    }
-
-    function compare_grades($first_course_detail, $second_course_detail) {
-        return strcmp($first_course_detail->grade, $second_course_detail->grade);
-    }
 
 ?>
 
@@ -106,7 +81,7 @@
                     <th id = "course-code-header" title = "Sort table by course code" onclick = "sortResultByCourseCode()">Course Code</th>
                     <th id = "credit-unit-header" title = "Sort table by credit unit" onclick = "sortResultByCreditUnit()">Credit Unit</th>
                     <th id = "grade-header" title = "Sort table by grade" onclick = "sortResultByGrade()">Grade</th>
-                    <th style = "display: none">Semester</th>
+                    <th>Semester</th>
                 </tr>
 
                 <?php
@@ -116,7 +91,6 @@
                         $total_credit_points = 0;
                         $current_course_number = 0;
                         $row_class = "";
-                        //      usort($course_details, "compare_course_codes");
     
                         foreach ($course_details as $course_detail) {
                             
@@ -132,7 +106,7 @@
                             echo "\t\t\t\t\t\t<td class = 'course-code'>" . $course_detail->course_code . "</td>\n";
                             echo "\t\t\t\t\t\t<td class = 'credit-unit'>" . $course_detail->credit_unit . "</td>\n";
                             echo "\t\t\t\t\t\t<td class = 'grade'>" . $course_detail->grade . "</td>\n";
-                            echo "\t\t\t\t\t\t<td class = 'semester' style = 'display: none'>" . $course_detail->semester . "</td>\n";
+                            echo "\t\t\t\t\t\t<td class = 'semester'>" . $course_detail->semester . "</td>\n";
                             echo "\t\t\t\t\t</tr>\n";
     
                             $current_course_number++;

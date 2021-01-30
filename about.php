@@ -37,7 +37,7 @@
         </p>
 
         <p>
-            You can also find my other projects on Github: <i><a href = "https://www.Github.com/Osas-Solo" target = "_blank">http://www.Github.com/Osas-Solo</a></i>
+            You can also find my other projects on Github: <a href = "https://www.Github.com/Osas-Solo" target = "_blank">Github.com/Osas-Solo</a>
         </p>
             
     </article>
