@@ -7,7 +7,7 @@ class Course {
     }   //  end of constructor
 }   //  end of class
 
-//  get course details form table
+//  get course details from table
 let courseCodes = document.getElementsByClassName("course-code");
 let creditUnits = document.getElementsByClassName("credit-unit");
 let grades = document.getElementsByClassName("grade");
@@ -35,10 +35,13 @@ function sortResultByCourseCode() {
 
     if (!areCourseCodesAscending) {
         for (let i = 0; i < courses.length; i++) {
-            for (let j = 0; j < courses.length - 1; j++)
-            if ((courses[j].semester >= courses[j + 1].semester) && 
-                (courses[j].courseCode.toUpperCase() > courses[j + 1].courseCode.toUpperCase())) {
-                    swapCoursesPosition(courses[j], courses[j + 1]);
+            for (let j = 0; j < courses.length - 1; j++) {
+                let currentSemesterPlusCourseCode = courses[j].semester + " " + courses[j].courseCode;
+                let nextSemesterPlusCourseCode = courses[j + 1].semester + " " + courses[j + 1].courseCode;
+
+                if (currentSemesterPlusCourseCode.toUpperCase() > nextSemesterPlusCourseCode.toUpperCase()) {
+                        swapCoursesPosition(courses[j], courses[j + 1]);
+                }
             }
         }
 
@@ -57,9 +60,10 @@ function sortResultByCreditUnit() {
 
     if (!areCreditUnitsAscending) {
         for (let i = 0; i < courses.length; i++) {
-            for (let j = 0; j < courses.length - 1; j++)
-            if (courses[j].creditUnit > courses[j + 1].creditUnit) {
-                swapCoursesPosition(courses[j], courses[j + 1]);
+            for (let j = 0; j < courses.length - 1; j++) {
+                if (courses[j].creditUnit > courses[j + 1].creditUnit) {
+                    swapCoursesPosition(courses[j], courses[j + 1]);
+                }
             }
         }
 
@@ -78,9 +82,10 @@ function sortResultByGrade() {
 
     if (!areGradesAscending) {
         for (let i = 0; i < courses.length; i++) {
-            for (let j = 0; j < courses.length - 1; j++)
-            if (courses[j].grade.toUpperCase() > courses[j + 1].grade.toUpperCase()) {
-                swapCoursesPosition(courses[j], courses[j + 1]);
+            for (let j = 0; j < courses.length - 1; j++) {
+                if (courses[j].grade.toUpperCase() > courses[j + 1].grade.toUpperCase()) {
+                    swapCoursesPosition(courses[j], courses[j + 1]);
+                }
             }
         }
 
