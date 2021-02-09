@@ -1,3 +1,3 @@
-    <footer>Copyright &copy;2020 OS Tech</footer>
+    <footer>Copyright &copy;2021 OS Tech</footer>
 </body>
 </html>

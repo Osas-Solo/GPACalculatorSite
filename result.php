@@ -6,17 +6,31 @@
 	require_once("header.php");
 	require_once("navigation.php");
 
-    function getRemark($gpa) {
+    function getRemark($institution, $gpa) {
         $remark = "";
 
-        if ($gpa >= 4.50) {
-            $remark = "First Class";
-        } else if ($gpa >= 3.50 && $gpa <= 4.49) {
-            $remark = "Second Class Upper";
-        } else if ($gpa >= 2.40 && $gpa <= 3.49) {
-            $remark = "Second Class Lower";
-        } else if ($gpa >= 1.50 && $gpa <= 2.39) {
-            $remark = "Third Class";
+        if (strtolower($institution) == "polytechnic") {
+            if ($gpa >= 3.50) {
+                $remark = "First Class";
+            } else if ($gpa >= 3 && $gpa <= 3.49) {
+                $remark = "Second Class Upper";
+            } else if ($gpa >= 2 && $gpa <= 2.99) {
+                $remark = "Second Class Lower";
+            } else if ($gpa >= 1 && $gpa <= 1.99) {
+                $remark = "Third Class";
+            }
+        }
+
+        else {
+            if ($gpa >= 4.50) {
+                $remark = "First Class";
+            } else if ($gpa >= 3.50 && $gpa <= 4.49) {
+                $remark = "Second Class Upper";
+            } else if ($gpa >= 2.40 && $gpa <= 3.49) {
+                $remark = "Second Class Lower";
+            } else if ($gpa >= 1.50 && $gpa <= 2.39) {
+                $remark = "Third Class";
+            }
         }
 
         return $remark;
@@ -30,9 +44,9 @@
 
             require_once("course_details.php");
             $is_course_valid = $_SESSION['valid_course'];
+            $institution = $_SESSION['institution'];
 
             if ($is_course_valid) {
-
                 $course_details = [];
                 $number_of_courses = count($_GET["course_codes"]);
                 $course_codes = [];
@@ -45,11 +59,12 @@
                     if (!isset($course_code)) {
                         $course_code = " ";
                     }
+
                     array_push($course_codes, $course_code);
                 }
     
                 foreach($_GET["credit_units"] as $credit_unit) {
-                    if (!isset($credit_unit)) {
+                    if (!isset($credit_unit) || !is_numeric($credit_unit)) {
                         $credit_unit = 0;
                     }
                     array_push($credit_units, $credit_unit);
@@ -60,12 +75,62 @@
                 }
 
                 for($i = 0; $i < count($_GET["levels"]); $i++) {
-                    $semester = $_GET["levels"][$i] . " Level " . $_GET["semesters"][$i] . " Semester";
+                    $semester = "";
+
+                    if (strtolower($institution) == "university") {
+                        $semester = $_GET["levels"][$i] . " Level " . $_GET["semesters"][$i] . " Semester";
+                    }
+
+                    else if (strtolower($institution) == "polytechnic") {
+                        $polytechnic_level = "";
+
+                        switch ($_GET["levels"][$i]) {
+                            case "100":
+                                $polytechnic_level = "OND 1";
+                                break;
+
+                            case "200":
+                                $polytechnic_level = "OND 2";
+                                break;
+
+                            case "300":
+                                $polytechnic_level = "HND 1";
+                                break;
+
+                            case "400":
+                                $polytechnic_level = "HND 2";
+                                break;
+                        }
+
+                        $semester = $polytechnic_level . " " . $_GET["semesters"][$i] . " Semester";
+                    }
+
+                    else if (strtolower($institution) == "college of education") {
+                        $college_of_education_level = "";
+
+                        switch ($_GET["levels"][$i]) {
+                            case "100":
+                                $college_of_education_level = "Year 1";
+                                break;
+
+                            case "200":
+                                $college_of_education_level = "Year 2";
+                                break;
+
+                            case "300":
+                                $college_of_education_level = "Year 3";
+                                break;
+                        }
+
+                        $semester = $college_of_education_level . " " . $_GET["semesters"][$i] . " Semester";
+                    }
+
                     array_push($semesters, $semester);
                 }
                 
                 for ($i = 0; $i < $number_of_courses; $i++) {
-                    array_push($course_details, new CourseDetail($course_codes[$i],
+                    array_push($course_details, new CourseDetail($institution,
+                                                                $course_codes[$i],
                                                                 $credit_units[$i],
                                                                 $grades[$i],
                                                                 $semesters[$i]));
@@ -127,7 +192,7 @@
                 print("\t\t\t\t<p>Total Number of Units: $total_number_of_units</p>\n");
                 print("\t\t\t\t<p>Total Credit Points: $total_credit_points</p>\n");
                 printf("\t\t\t\t<p>GPA: %.2f</p>\n", $grade_point_average);
-                print("\t\t\t\t<p>Remark: " . getRemark($grade_point_average) . "</p>\n");
+                print("\t\t\t\t<p>Remark: " . getRemark($institution, $grade_point_average) . "</p>\n");
             }
 
         ?>

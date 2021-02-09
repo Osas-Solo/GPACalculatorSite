@@ -1,6 +1,5 @@
 <?php
 
-	
 	$page_title = "Home";
 	require_once("header.php");
 	require_once("navigation.php");
@@ -24,7 +23,7 @@
 				<div id = "college-of-science-container" style = "display: none">
 					<label for = "department">Department:</label>
 
-					<select id = "college-of-science">
+					<select id = "college-of-science" onchange = "changeFinalYearForCollegeOfScience()">
 						<option value="computer_science">Computer Science</option>
 						<option value="mathematics">Mathematics</option>
 						<option value="chemistry">Chemistry</option>
@@ -48,39 +47,39 @@
 				</div>
 			</fieldset>
 
-			<script src = "js/select_department.js"></script>
-
 			<div id = "semesters-fieldsets-container">
-				<fieldset class = "threes">
+				<fieldset>
 					<legend>100 Level</legend>
 					<input type = "checkbox" name = "11" value = "100 1st" checked = "checked"><label>1st Semester</label><br>
 					<input type = "checkbox" name = "12" value = "100 2nd"><label>2nd Semester</label>
 				</fieldset>
 
-				<fieldset class = "threes">
+				<fieldset>
 					<legend>200 Level</legend>
 					<input type = "checkbox" name = "21" value = "200 1st"><label>1st Semester</label><br>
 					<input type = "checkbox" name = "22" value = "200 2nd"><label>2nd Semester</label>
 				</fieldset>
 
-				<fieldset class = "threes">
+				<fieldset>
 					<legend>300 Level</legend>
 					<input type = "checkbox" name = "31" value = "300 1st"><label>1st Semester</label><br>
 					<input type = "checkbox" name = "32" value = "300 2nd"><label>2nd Semester</label>
 				</fieldset>
 
-				<fieldset class = "threes">
+				<fieldset>
 					<legend>400 Level</legend>
 					<input type = "checkbox" name = "41" value = "400 1st"><label>1st Semester</label><br>
 					<input type = "checkbox" name = "42" value = "400 2nd"><label>2nd Semester</label>
 				</fieldset>
 
-				<fieldset class = "threes">
+				<fieldset id = "500-level">
 					<legend>500 Level</legend>
 					<input type = "checkbox" name = "51" value = "500 1st"><label>1st Semester</label><br>
 					<input type = "checkbox" name = "52" value = "500 2nd"><label>2nd Semester</label>
 				</fieldset>
 			</div>
+
+			<script src = "js/select_department.js"></script>
 
 			<button type = "submit" name = "submit">
 				Proceed

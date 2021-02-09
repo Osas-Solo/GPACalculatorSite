@@ -1,3 +1,6 @@
+let institution = document.getElementById("institution").innerHTML;
+console.log(institution);
+
 function addCourses() {
     let coursesNumberField = document.getElementById("number_of_new_courses");
     let numberOfCourses = coursesNumberField.value;
@@ -19,7 +22,54 @@ function addCourse() {
     let legend = document.createElement("legend");
     let level = currentSemester.substring(0, currentSemester.indexOf("-"));
     let semester = currentSemester.substring(currentSemester.indexOf("-") + 1);
-    legend.innerHTML = level + " Level: " + semester + " Semester";
+
+    if (institution.toLowerCase() == "university") {
+        legend.innerHTML = level + " Level: " + semester + " Semester";
+    }
+    
+    else if (institution.toLowerCase() == "polytechnic") {
+        let polytechnicLevel = "";
+
+        switch (level) {
+            case "100":
+                polytechnicLevel = "OND 1";
+                break;
+
+            case "200":
+                polytechnicLevel = "OND 2";
+                break;
+
+            case "300":
+                polytechnicLevel = "HND 1";
+                break;
+
+            case "400":
+                polytechnicLevel = "HND 2";
+                break;
+        }
+
+        legend.innerHTML = polytechnicLevel + ": " + semester + " Semester";
+    }
+
+    else if (institution.toLowerCase() == "college of education") {
+        let collegeOfEducationLevel = "";
+
+        switch (level) {
+            case "100":
+                collegeOfEducationLevel = "Year 1";
+                break;
+
+            case "200":
+                collegeOfEducationLevel = "Year 2";
+                break;
+
+            case "300":
+                collegeOfEducationLevel = "Year 3";
+                break;
+        }
+
+        legend.innerHTML = collegeOfEducationLevel + ": " + semester + " Semester";
+    }
 
     //  create inputs container
     let inputsContainers = [];
@@ -55,13 +105,18 @@ function addCourse() {
     gradeSelector.setAttribute("name", "grades[]");
     let options = [];
 
-    let i = 0;
-    let values = ['A', 'B', 'C', 'D', 'E', 'F'];
+    let gradeValues = [];
 
-    for (i = 0; i < 6; i++) {
+    if (institution.toLowerCase() == "polytechnic") {
+        gradeValues = ['A', 'AB', 'B', 'BC', 'C', 'CD', 'D', 'E', 'F'];
+    }   else {
+        gradeValues = ['A', 'B', 'C', 'D', 'E', 'F'];
+    }
+
+    for (let i = 0; i < gradeValues.length; i++) {
         options[i] = document.createElement("option");
-        options[i].setAttribute("value", values[i]);
-        options[i].innerHTML = values[i];
+        options[i].setAttribute("value", gradeValues[i]);
+        options[i].innerHTML = gradeValues[i];
         gradeSelector.appendChild(options[i]);
     }
 

@@ -12,23 +12,30 @@
         <?php
             //  connect to database
             require_once("database_connection.php");
-            $department = $_GET["department"];
+            $institution = "University";
+            $_SESSION['institution'] = $institution;
+            $department = mysqli_real_escape_string($database_connector, trim($_GET["department"]));
             $table_name = $department;
             
             //  prepare where clause
             $where_clause = "";
-            for ($i = 1; $i <= 5; $i++) {
-                for ($j = 1; $j <= 2; $j++) {
+            $maximum_number_of_levels = 5;
+            $maximum_number_of_semesters = 2;
+
+            for ($i = 1; $i <= $maximum_number_of_levels; $i++) {
+                for ($j = 1; $j <= $maximum_number_of_semesters; $j++) {
                     if(isset($_GET[$i . $j])) {
                         if (!empty($where_clause)) {
                             $where_clause .= " OR ";
                         }  //  end of if !empty
 
-                        $selected = $_GET[$i . $j];
-                        $level_and_semester = explode(" ", $selected);
+                        $selected_semesters = $_GET[$i . $j];
+                        $level_and_semester = explode(" ", $selected_semesters);
+                        $level = mysqli_real_escape_string($database_connector, $level_and_semester[0]);
+                        $semester = mysqli_real_escape_string($database_connector, $level_and_semester[1]);
 
-                        $where_clause .= " level = '" . $level_and_semester[0] . "'";
-                        $where_clause .= " AND semester = '" . $level_and_semester[1] . "'";
+                        $where_clause .= " level = '" . $level . "'";
+                        $where_clause .= " AND semester = '" . $semester . "'";
                     }  //  end of if isset
                 }  //  end of for j
             }  //  end of for i
@@ -97,6 +104,7 @@
             </div>
 
         <?php
+            echo "\t<span id = 'institution' style = 'display: none'>" . $institution . "</span>\n";
             echo "\t<span id = 'current-semester' style = 'display: none'>" . $first_semester . "</span>\n";
         ?>
 

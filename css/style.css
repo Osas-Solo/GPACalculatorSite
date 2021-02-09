@@ -29,16 +29,22 @@ header {
     padding: 10px;
     box-shadow: var(--drop-shadow1);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 header #logo {
     width: 30%;
 }
 
+header #logo a {
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+}
+
 header #logo img {
     width: 150px;
-    height: 40px;
+    height: auto;
     display: block;
     margin: 0 auto;
 }
@@ -48,7 +54,7 @@ header #nav-toggler {
 }
 
 header nav {
-    width: 40%;
+    width: 70%;
     padding: 10px;
 }
 
@@ -56,7 +62,7 @@ header nav ul {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    text-align: center;
 }
 
 header nav ul li {
@@ -69,7 +75,7 @@ header nav ul a{
     text-decoration: none;
 }
 
-header nav ul a:focus, header nav ul li a:hover, header nav ul a:active {
+header nav ul a:focus, header nav ul a:hover, header nav ul a:active {
     color: var(--complementary-color1) !important;
 }
 
@@ -95,7 +101,7 @@ legend {
     color: var(--primary-color2);
 }
 
-#department-fieldset {
+#department-fieldset, #school-fieldset {
     width: 80%;
     text-align: center;
 }
@@ -139,7 +145,7 @@ input[type = "checkbox"] {
     margin-right: 20px;
 }
 
-#department-fieldset select {
+#department-fieldset select, #school-fieldset select {
     width: 90%;
 }
 
@@ -326,8 +332,7 @@ a:focus {
     }
     
     header nav {
-        display: none;
-        height: 150px;
+        display: none;        
         width: 100%;
         margin: auto;
     }
@@ -339,7 +344,7 @@ a:focus {
 
     header nav ul li {
         display: block;
-        margin-top: 10px;
+        margin-top: 15px;
     }
 
     article {
@@ -352,14 +357,14 @@ a:focus {
         margin: 10px auto;
     }
 
+    #department-fieldset, #school-fieldset {
+        margin-bottom: 80px;
+    }
+
     #semesters-fieldsets-container, #courses-fieldsets-container {
         margin: 0 auto;
         padding: 0px;
         display: block;
-    }
-
-    #department-fieldset {
-        margin-bottom: 80px;
     }
 
     #semesters-fieldsets-container fieldset, #courses-fieldsets-container fieldset {
@@ -385,6 +390,20 @@ a:focus {
     }
 
     table {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-device-width: 840px) and (orientation: landscape) {
+    header {
+        display: block;
+    }
+
+    header #logo {
+        width: 100%;
+    }
+
+    header nav {
         width: 100%;
     }
 }
