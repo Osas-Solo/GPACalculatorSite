@@ -21,15 +21,15 @@
             }
         }
 
-        else {
+        else if (strtolower($institution) == "university" || strtolower($institution) == "college of education") {
             if ($gpa >= 4.50) {
-                $remark = "First Class";
+                $remark = (strtolower($institution) == "university") ? "First Class" : "Distinction";
             } else if ($gpa >= 3.50 && $gpa <= 4.49) {
-                $remark = "Second Class Upper";
+                $remark = (strtolower($institution) == "university") ? "Second Class Upper" : "Credit";
             } else if ($gpa >= 2.40 && $gpa <= 3.49) {
-                $remark = "Second Class Lower";
+                $remark = (strtolower($institution) == "university") ? "Second Class Lower" : "Merit";
             } else if ($gpa >= 1.50 && $gpa <= 2.39) {
-                $remark = "Third Class";
+                $remark = (strtolower($institution) == "university") ? "Third Class" : "Pass";
             }
         }
 

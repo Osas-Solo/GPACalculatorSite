@@ -1,5 +1,4 @@
 let institution = document.getElementById("institution").innerHTML;
-console.log(institution);
 
 function addCourses() {
     let coursesNumberField = document.getElementById("number_of_new_courses");

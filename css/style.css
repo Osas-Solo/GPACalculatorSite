@@ -317,6 +317,15 @@ a:focus {
     color: var(--primary-color1);
 }
 
+.remove-course-button {
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff0000;
+    width: 1.5em;
+    margin: 0 auto;
+}
+
 @media only screen and (max-device-width: 600px) {
     header {
         display: block;

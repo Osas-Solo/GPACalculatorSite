@@ -94,6 +94,8 @@
                     echo "\t\t\t\t<input type = 'text' name = 'levels[]' value = '" . $row["level"] . "' style = 'display: none;'>\n";
 
                     echo "\t\t\t\t<input type = 'text' name = 'semesters[]' value = '" . $row["semester"] . "' style = 'display: none;'>\n";
+                    
+                    echo "\t\t\t\t<div class = 'remove-course-button' title = 'Remove course' onclick = 'removeCourse(event)'>X</div>\n";
                     echo "\t\t\t</fieldset>\n\n";
                 }
             } else {
@@ -127,6 +129,7 @@
         </form>
 
         <script src = "js/add_courses.js"></script>
+        <script src = "js/remove_courses.js"></script>
 
         <fieldset id = "extra-courses">
             <legend>Extra Courses</legend>
