@@ -27,6 +27,13 @@ let areCourseCodesAscending = false;
 let areCreditUnitsAscending = false;
 let areGradesAscending = false;
 
+let courseCodeAscendingIndicator = document.getElementById("course-code-ascending");
+let courseCodeDescendingIndicator = document.getElementById("course-code-descending");
+let creditUnitAscendingIndicator = document.getElementById("credit-unit-ascending");
+let creditUnitDescendingIndicator = document.getElementById("credit-unit-descending");
+let gradeAscendingIndicator = document.getElementById("grade-ascending");
+let gradeDescendingIndicator = document.getElementById("grade-descending");
+
 sortResultByCourseCode();
 
 function sortResultByCourseCode() {
@@ -46,10 +53,16 @@ function sortResultByCourseCode() {
         }
 
         areCourseCodesAscending = true;
+        showAscendingIndicator(courseCodeAscendingIndicator, courseCodeDescendingIndicator);
+        showBothIndicators(creditUnitAscendingIndicator, creditUnitDescendingIndicator);
+        showBothIndicators(gradeAscendingIndicator, gradeDescendingIndicator);
         refreshTable();
     }   else if (areCourseCodesAscending) {
         courses.reverse();
         areCourseCodesAscending = false;
+        showDescendingIndicator(courseCodeAscendingIndicator, courseCodeDescendingIndicator);
+        showBothIndicators(creditUnitAscendingIndicator, creditUnitDescendingIndicator);
+        showBothIndicators(gradeAscendingIndicator, gradeDescendingIndicator);
         refreshTable();
     }
 }   //  end of sortResultByCourseCode()
@@ -68,10 +81,16 @@ function sortResultByCreditUnit() {
         }
 
         areCreditUnitsAscending = true;
+        showAscendingIndicator(creditUnitAscendingIndicator, creditUnitDescendingIndicator);
+        showBothIndicators(courseCodeAscendingIndicator, courseCodeDescendingIndicator);
+        showBothIndicators(gradeAscendingIndicator, gradeDescendingIndicator);
         refreshTable();
     }   else if (areCreditUnitsAscending) {
         courses.reverse();
         areCreditUnitsAscending = false;
+        showDescendingIndicator(creditUnitAscendingIndicator, creditUnitDescendingIndicator);
+        showBothIndicators(courseCodeAscendingIndicator, courseCodeDescendingIndicator);
+        showBothIndicators(gradeAscendingIndicator, gradeDescendingIndicator);
         refreshTable();
     }
 }   //  end of sortResultByCreditUnit()
@@ -90,10 +109,16 @@ function sortResultByGrade() {
         }
 
         areGradesAscending = true;
+        showAscendingIndicator(gradeAscendingIndicator, gradeDescendingIndicator);
+        showBothIndicators(courseCodeAscendingIndicator, courseCodeDescendingIndicator);
+        showBothIndicators(creditUnitAscendingIndicator, creditUnitDescendingIndicator);
         refreshTable();
     }   else if (areGradesAscending) {
         courses.reverse();
         areGradesAscending = false;
+        showDescendingIndicator(gradeAscendingIndicator, gradeDescendingIndicator);
+        showBothIndicators(courseCodeAscendingIndicator, courseCodeDescendingIndicator);
+        showBothIndicators(creditUnitAscendingIndicator, creditUnitDescendingIndicator);
         refreshTable();
     }
 }   //  end of sortResultByGrade()
@@ -125,3 +150,18 @@ function refreshTable() {
         semesters[i].innerHTML = courses[i].semester;
     }
 }   //  end of refreshTable()
+
+function showAscendingIndicator(tableHeaderAscendingIndicator, tableHeaderDescendingIndicator) {
+    tableHeaderAscendingIndicator.style.display = "";
+    tableHeaderDescendingIndicator.style.display = "none";
+}   //  end of showAscendingIndicator()
+
+function showDescendingIndicator(tableHeaderAscendingIndicator, tableHeaderDescendingIndicator) {
+    tableHeaderAscendingIndicator.style.display = "none";
+    tableHeaderDescendingIndicator.style.display = "";
+}   //  end of showDescendingIndicator()
+
+function showBothIndicators(tableHeaderAscendingIndicator, tableHeaderDescendingIndicator) {
+    tableHeaderAscendingIndicator.style.display = "";
+    tableHeaderDescendingIndicator.style.display = "";
+}   //  end of showBothIndicators()

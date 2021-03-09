@@ -11,7 +11,7 @@
 			<fieldset id = "school-fieldset">
 				<label for = "institution">Institution:</label>
 
-				<select name = "institution" id = "institution" onchange = "showLevels()">
+				<select name = "institution" id = "institution" onchange = "showLevels()" required = "required">
 					<option value = ""></option>
 					<option value = "University">University</option>
 					<option value = "Polytechnic">Polytechnic</option>

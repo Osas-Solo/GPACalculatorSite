@@ -13,7 +13,7 @@
 				<div id = "college-container">
 					<label for = "college">College:</label>
 
-					<select name = "college" id = "college" onchange = "showDepartments()">
+					<select name = "college" id = "college" onchange = "showDepartments()" required = "required">
 						<option value = ""></option>
 						<option value = "College of Science">College of Science</option>
 						<option value = "College of Technology">College of Technology</option>

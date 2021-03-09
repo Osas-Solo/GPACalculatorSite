@@ -143,9 +143,30 @@
             <table id = "result-table">
 
                 <tr class = "table-header">
-                    <th id = "course-code-header" title = "Sort table by course code" onclick = "sortResultByCourseCode()">Course Code</th>
-                    <th id = "credit-unit-header" title = "Sort table by credit unit" onclick = "sortResultByCreditUnit()">Credit Unit</th>
-                    <th id = "grade-header" title = "Sort table by grade" onclick = "sortResultByGrade()">Grade</th>
+                    <th id = "course-code-header" title = "Sort table by course code" onclick = "sortResultByCourseCode()">
+                        Course Code
+                        <div class = "sort-indicator">
+                            <span id = "course-code-ascending">&#8593;</span>
+                            <span id = "course-code-descending">&#8595;</span>
+                        </div>
+                    </th>
+
+                    <th id = "credit-unit-header" title = "Sort table by credit unit" onclick = "sortResultByCreditUnit()">
+                        Credit Unit
+                        <div class = "sort-indicator">
+                            <span id = "credit-unit-ascending">&#8593;</span>
+                            <span id = "credit-unit-descending">&#8595;</span>
+                        </div>
+                    </th>
+
+                    <th id = "grade-header" title = "Sort table by grade" onclick = "sortResultByGrade()">
+                        Grade
+                        <div class = "sort-indicator">
+                            <span id = "grade-ascending">&#8593;</span>
+                            <span id = "grade-descending">&#8595;</span>
+                        </div>
+                    </th>
+                    
                     <th>Semester</th>
                 </tr>
 
