@@ -209,7 +209,12 @@
         <?php
 
             if ($is_course_valid) {
-                $grade_point_average = $total_credit_points / $total_number_of_units;
+                $grade_point_average = 0;
+                if ($total_number_of_units == 0) {
+                    $grade_point_average = 0;
+                }   else {
+                    $grade_point_average = $total_credit_points / $total_number_of_units;
+                }
                 print("\t\t\t\t<p>Total Number of Units: $total_number_of_units</p>\n");
                 print("\t\t\t\t<p>Total Credit Points: $total_credit_points</p>\n");
                 printf("\t\t\t\t<p>GPA: %.2f</p>\n", $grade_point_average);
@@ -222,5 +227,6 @@
     </article>
 
 <?php  
+    session_destroy();
 	require_once("footer.php");
 ?>    

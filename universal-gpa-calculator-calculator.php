@@ -10,7 +10,7 @@
     <article>
       
         <?php
-            //  connect to database
+            $_SESSION['valid_course'] = true;
             $institution = $_GET["institution"];
             $_SESSION['institution'] = $institution;
             $maximum_number_of_levels = 6;
